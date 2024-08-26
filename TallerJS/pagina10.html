@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>JAVA SCRIPT</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function enviar() {
+          let _vector = [];
+          _vector[0] = $("#fecha").val();
+          _vector[1] = $("#nombre").val();
+          _vector[2] = $("#btnCancelar").val();
+          _vector[3] = $("#color").val();
+
+          let fechaX = new Date();
+          var fechacad =
+            fechaX.getDate() +
+            "/" +
+            (fechaX.getMonth() + 1) +
+            "/" +
+            fechaX.getFullYear() +
+            " " +
+            fechaX.getHours() +
+            ":" +
+            fechaX.getMinutes() +
+            ":" +
+            fechaX.getSeconds();
+
+          alert(_vector.length);
+          alert(_vector[3]);
+          alert(fechacad);
+        }
+
+        $("#archivo").change(function (event) {
+          var file = event.target.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $("#imagen").attr("src", e.target.result).show();
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        $("#btnEnviar").click(function () {
+          enviar();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="principal" class="form-group">
+      <p>NOMBRE: <input type="text" id="nombre" /></p>
+      <p>F. NAC: <input type="date" id="fecha" /></p>
+      <p>COLOR: <input type="color" id="color" /></p>
+      <p>ARCHIVO: <input type="file" id="archivo" /></p>
+      <p>CORREO: <input type="email" id="correo" /></p>
+      <p>HORA: <input type="time" id="hora" /></p>
+      <p>IMAGEN: <input type="image" id="imagen" /></p>
+      <p>
+        <button id="btnEnviar" onclick="enviar();" class="btn btn-primary">
+          Enviar</button
+        >&nbsp;
+        <button id="btnCancelar" onclick="cancelar();" class="btn btn-primary">
+          Cancelar
+        </button>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Operaciones JS</title>
+    <meta charset="iso-8859-1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function recuperarContenido() {
+          var dato1 = $("#campo1").val();
+          var dato2 = $("#campo2").val();
+          var operacion = -1;
+          var tipoInputs = $('input[name="grupo"]');
+          tipoInputs.each(function () {
+            if ($(this).is(":checked")) {
+              operacion = $(this).val();
+            }
+          });
+
+          var resultado;
+          switch (operacion) {
+            case "1":
+              resultado = Number(dato1) + Number(dato2);
+              alert("La suma es = " + resultado);
+              break;
+            case "2":
+              resultado = Number(dato1) - Number(dato2);
+              alert("La resta es = " + resultado);
+              break;
+            case "3":
+              resultado = Number(dato1) * Number(dato2);
+              alert("El producto es = " + resultado);
+              break;
+            case "4":
+              if (dato2 != 0) {
+                resultado = Number(dato1) / Number(dato2);
+              } else {
+                resultado = "Indefinido";
+              }
+              alert("La division es = " + resultado);
+              break;
+            default:
+              alert("Elija una operacion");
+          }
+        }
+
+        function nuevaOperacion() {
+          $("#campo1").val("");
+          $("#campo2").val("");
+          $('input[name="grupo"]').prop("checked", false);
+          $("#campo1").focus();
+        }
+
+        // Validar que solo se acepten números de hasta tres dígitos
+        $("#campo1, #campo2").on("input", function () {
+          var valor = $(this).val();
+          if (!/^\d{0,3}$/.test(valor)) {
+            $(this).val(valor.slice(0, 3));
+          }
+        });
+
+        // Evitar que se ingresen letras u otros símbolos por teclado
+        $("#campo1, #campo2").on("keypress", function (event) {
+          var keyCode = event.which ? event.which : event.keyCode;
+          if (keyCode < 48 || keyCode > 57) {
+            event.preventDefault();
+          }
+        });
+
+        $("#btnOperar").click(function () {
+          recuperarContenido();
+        });
+
+        $("#btnNuevo").click(function () {
+          nuevaOperacion();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="form-group">
+      <p>
+        Ingrese un número:
+        <input type="text" value="" id="campo1" />
+      </p>
+      <p>
+        Ingrese otro número:
+        <input type="text" value="" id="campo2" />
+      </p>
+      <p>
+        <input type="radio" name="grupo" value="1" />Suma
+        <input type="radio" name="grupo" value="2" />Resta
+        <input type="radio" name="grupo" value="3" />Multiplicacion
+        <input type="radio" name="grupo" value="4" />Division
+      </p>
+      <p>
+        <button id="btnOperar" class="btn btn-primary">Operar</button> &nbsp;
+        <button id="btnNuevo" class="btn btn-primary">Nuevo</button>
+      </p>
+    </div>
+  </body>
+</html>

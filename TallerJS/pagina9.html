@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>JAVA SCRIPT</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function enviar() {
+          var nombre = $("#nombre").val();
+          var fecha = $("#fecha").val();
+          var texto = "Nombre: " + nombre + " \n" + "Fecha: " + fecha;
+          alert(texto);
+        }
+
+        function cancelar() {
+          $("#nombre").val("");
+          $("#fecha").val("");
+        }
+
+        // Validar que el campo #nombre solo acepte letras y espacios
+        $("#nombre").on("input", function () {
+          var regex = /^[a-zA-Z\s]*$/;
+          if (!regex.test($(this).val())) {
+            $(this).val(
+              $(this)
+                .val()
+                .replace(/[^a-zA-Z\s]/g, "")
+            );
+          }
+        });
+
+        // Puedes llamar a las funciones enviar() y cancelar() cuando sea necesario
+        $("#btnEnviar").click(function () {
+          enviar();
+        });
+
+        $("#btnCancelar").click(function () {
+          cancelar();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="principal" class="form-group">
+      <p class="mb-5">
+        NOMBRE:
+        <input type="text" id="nombre" />
+      </p>
+      <p class="mb-5">
+        F. NAC:
+        <input type="date" id="fecha" />
+      </p>
+      <p>
+        <button id="btnEnviar" class="btn btn-primary">Enviar</button>&nbsp;
+        <button id="btnCancelar" class="btn btn-primary">Cancelar</button>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Limpiar Checks</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        function quitarCheckBox() {
+          var $cbx = $("form[name='formCheck'] input");
+          if ($cbx.length > 0) {
+            var $cbxQuitar = $cbx.first();
+            $cbxQuitar.remove();
+            var $aQuitar = $("form[name='formCheck'] a").first();
+            $aQuitar.remove();
+          } else {
+            alert("No existe más opciones");
+          }
+        }
+
+        $("#cmdQuitar").click(function () {
+          quitarCheckBox();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="cmdQuitar" class="btn btn-primary">
+      Quitar primer Check Box
+    </button>
+    <form name="formCheck">
+      <div id="idCheck">
+        <input type="checkbox" name="lp" value="0" /><a>La Paz</a><br />
+        <input type="checkbox" name="or" value="1" /><a>Oruro</a><br />
+        <input type="checkbox" name="pt" value="2" /><a>Potosi</a><br />
+        <input type="checkbox" name="cb" value="3" /><a>Cochabamba</a><br />
+        <input type="checkbox" name="bn" value="4" /><a>Beni</a><br />
+        <input type="checkbox" name="pn" value="5" /><a>Pando</a><br />
+        <input type="checkbox" name="sc" value="6" /><a>Santa Cruz</a><br />
+        <input type="checkbox" name="tr" value="7" /><a>Tarija</a><br />
+        <input type="checkbox" name="ch" value="8" /><a>Chuquisaca</a><br />
+      </div>
+    </form>
+  </body>
+</html>

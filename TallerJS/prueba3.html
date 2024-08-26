@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Quitar Ultimo Parrafo</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function eliminarUltimoParrafo() {
+          var parrafos = $("p");
+          var ultimoParrafo = parrafos.length - 1;
+          if (ultimoParrafo >= 0) {
+            parrafos.eq(ultimoParrafo).remove();
+          } else {
+            alert("No existen más parrafos");
+          }
+        }
+
+        $("#btnEliminar").click(function () {
+          eliminarUltimoParrafo();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btnEliminar" class="btn btn-primary">
+      Elimina el ultimo parrafo
+    </button>
+    <p>Parrafo uno</p>
+    <p>Parrafo dos</p>
+    <p>Parrafo tres</p>
+    <p>Parrafo cuatro</p>
+    <p>Parrafo cinco</p>
+  </body>
+</html>

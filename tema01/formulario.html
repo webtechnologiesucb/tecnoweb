@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <title>Sistema de Inicio de Sesión</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Iniciar Sesión</h1>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="usuario">Usuario:</label>
+          <input type="text" id="usuario" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input
+            type="password"
+            id="contrasena"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+      </form>
+    </div>
+
+    <br />
+    <input
+      class="btn btn-primary"
+      type="button"
+      onclick="history.back()"
+      value="Volver"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Manejar el envío del formulario
+      $(document).ready(function () {
+        $("#loginForm").submit(function (event) {
+          event.preventDefault();
+          let usuario = $("#usuario").val();
+          let contrasena = $("#contrasena").val();
+
+          if (usuario === "admin" && contrasena === "123456") {
+            Swal.fire(
+              "Ingreso aceptado",
+              "Inicio de sesión exitoso.",
+              "success"
+            );
+          } else {
+            Swal.fire(
+              "Error",
+              "Credenciales incorrectas. Inténtalo nuevamente.",
+              "error"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

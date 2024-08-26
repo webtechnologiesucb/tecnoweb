@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>JAVA SCRIPT</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function sumar() {
+          var _x = "9";
+          var _y = 8;
+          var resultado = Number(_x) + _y; // eval(texto)
+          alert(resultado);
+          //alert(_x + _y);
+        }
+
+        // Puedes llamar a la función sumar() cuando sea necesario
+        // Por ejemplo, al hacer clic en un botón:
+        $("#btnSumar").click(function () {
+          sumar();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="principal" class="row grow w-100">
+      <button id="btnSumar" class="btn btn-primary">Sumar</button>
+    </div>
+  </body>
+</html>

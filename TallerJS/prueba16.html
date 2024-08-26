@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function sumaTabla() {
+          var suma = 0;
+          var $tabla = $("#tablaDatos");
+          var $filas = $tabla.find("tr");
+          $filas.each(function () {
+            var $celdas = $(this).find("td");
+            $celdas.each(function () {
+              suma += eval($(this).text());
+            });
+          });
+          alert("Suma de la tabla es = " + suma);
+        }
+
+        function sumaColumnaDos() {
+          var suma = 0;
+          var $tabla = $("#tablaDatos");
+          var $filas = $tabla.find("tr");
+          $filas.each(function () {
+            var $celda = $(this).find("td").eq(2);
+            suma += eval($celda.text());
+          });
+          alert("Suma de la columna dos es = " + suma);
+        }
+
+        function sumaFilaUno() {
+          var suma = 0;
+          var $tabla = $("#tablaDatos");
+          var $celdas = $tabla.find("tr").eq(1).find("td");
+          $celdas.each(function () {
+            suma += eval($(this).text());
+          });
+          alert("Suma de la fila uno es = " + suma);
+        }
+
+        $("#btnSumar").click(function () {
+          sumaTabla();
+        });
+
+        $("#btnColumnaDos").click(function () {
+          sumaColumnaDos();
+        });
+
+        $("#btnFilaUno").click(function () {
+          sumaFilaUno();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btnSumar" class="btn btn-primary">Suma la tabla</button>
+    <button id="btnColumnaDos" class="btn btn-primary">Suma la columa 2</button>
+    <button id="btnFilaUno" class="btn btn-primary">Suma la fila 1</button>
+    <br /><br />
+    <table id="tablaDatos" class="table" style="border: 1px">
+      <tr style="border: 1px black solid">
+        <td style="border: 1px black solid" rowspan="2">10</td>
+        <td style="border: 1px black solid">20</td>
+        <td style="border: 1px black solid">30</td>
+        <td style="border: 1px black solid">40</td>
+        <td style="border: 1px black solid">50</td>
+        <td style="border: 1px black solid">60</td>
+      </tr>
+      <tr style="border: 1px black solid">
+        <td style="border: 1px black solid">5</td>
+        <td style="border: 1px black solid" colspan="2">10</td>
+        <td style="border: 1px black solid">15</td>
+        <td style="border: 1px black solid" colspan="2">20</td>
+      </tr>
+      <tr>
+        <td style="border: 1px black solid">1</td>
+        <td style="border: 1px black solid" colspan="3">2</td>
+        <td style="border: 1px black solid" colspan="3">3</td>
+      </tr>
+    </table>
+  </body>
+</html>

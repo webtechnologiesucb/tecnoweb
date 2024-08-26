@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Tabla Dinamica</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var num_fila_nueva = 0;
+        function load() {
+          $("form[id='form_uno'] [id='cmdNuevo']").prop("disabled", true);
+          $("form[id='form_uno'] [id='numeroCampos']").focus();
+          $("form[id='form_tres'] [id='cmdBajarDatos']").prop("disabled", true);
+        }
+
+        function crearCampos() {
+          var $formUno = $("form[id='form_uno']");
+          var numCampos = $formUno.find("[id='numeroCampos']").val();
+
+          if (numCampos === "") {
+            alert("Ingrese número de campos!");
+            load();
+          } else if (isNaN(numCampos)) {
+            alert("Error, debe ingresar un número");
+            load();
+          } else {
+            var $objetoTexto = $("#idTextos");
+            for (var i = 0; i < numCampos; i++) {
+              var $objItem = $("<input>", {
+                type: "text",
+                id: "campo_" + i,
+                value: "",
+              });
+              var $objLabel = $("<label>").append($objItem);
+              $objetoTexto.append($objLabel);
+            }
+            $formUno.find("[id='cmdCampos']").prop("disabled", true);
+            $formUno.find("[id='numeroCampos']").prop("disabled", true);
+            $formUno.find("[id='cmdNuevo']").prop("disabled", false);
+            $("form[id='form_tres'] [id='cmdBajarDatos']").prop(
+              "disabled",
+              false
+            );
+            $("form[id='form_dos'] [id='campo_0']").focus();
+          }
+        }
+
+        function bajarDatos() {
+          var numCampos = $("form[id='form_uno'] [id='numeroCampos']").val();
+          var lleno = true;
+
+          for (var i = 0; i < numCampos; i++) {
+            var $d = $("#campo_" + i);
+            if ($d.val() === "") lleno = false;
+          }
+
+          if (!lleno) {
+            alert("Todos los campos deben tener datos");
+            $("form[id='form_dos'] [id='campo_0']").focus();
+          } else {
+            var $tabla = $("#idTabla");
+            var $fila = $("<tr>");
+
+            for (var i = 0; i < numCampos; i++) {
+              var $d = $("#campo_" + i);
+              var $celda = $("<td>").text($d.val());
+              $fila.append($celda);
+            }
+
+            $tabla.append($fila);
+            num_fila_nueva++;
+
+            for (var i = 0; i < numCampos; i++) {
+              $("#campo_" + i).val("");
+            }
+
+            $("form[id='form_dos'] [id='campo_0']").focus();
+          }
+        }
+
+        function nuevaTabla() {
+          var $formUno = $("id[name='form_uno']");
+          $formUno.find("[id='cmdCampos']").prop("disabled", false);
+          $formUno
+            .find("[id='numeroCampos']")
+            .prop("disabled", false)
+            .val("")
+            .focus();
+          num_fila_nueva = 0;
+
+          // Eliminamos los espacios de texto
+          $("form[id='form_dos'] input").remove();
+          // Eliminamos la tabla
+          $("#idTabla tr").remove();
+          load();
+        }
+
+        $("#cmdCampos").click(function () {
+          crearCampos();
+        });
+
+        $("#cmdNuevo").click(function () {
+          nuevaTabla();
+        });
+
+        $("#cmdBajarDatos").click(function () {
+          bajarDatos();
+        });
+      });
+    </script>
+  </head>
+  <body onload="load()">
+    <form id="form_uno" action="" class="form-group">
+      <p>
+        Ingrese número de campos:
+        <input type="text" id="numeroCampos" value="" maxlength="3" size="3" />
+      </p>
+      <p>
+        <button id="cmdCampos" class="btn btn-primary">
+          Crear espacios de entrada
+        </button>
+        <button id="cmdNuevo" class="btn btn-primary">Nueva tabla</button>
+      </p>
+    </form>
+    <form id="form_dos" action="">
+      <div id="idTextos"></div>
+    </form>
+    <form id="form_tres" action="">
+      <p>
+        <button id="cmdBajarDatos" class="btn btn-primary">
+          Bajar datos a la tabla
+        </button>
+      </p>
+      <table id="idTabla" style="border: 1px black solid"></table>
+    </form>
+  </body>
+</html>

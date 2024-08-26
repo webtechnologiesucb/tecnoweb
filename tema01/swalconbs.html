@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <title>Generador de Múltiplos</title>
+    <!-- Agregar enlaces a los archivos de Bootstrap y SweetAlert -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Generador de Múltiplos</h1>
+      <form id="multiplosForm">
+        <div class="form-group">
+          <label for="numero">Ingrese un número entero:</label>
+          <input type="number" class="form-control" id="numero" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Generar Múltiplos</button>
+      </form>
+    </div>
+
+    <br />
+    <input
+      class="btn btn-primary"
+      type="button"
+      onclick="history.back()"
+      value="Volver"
+    />
+
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Manejar el envío del formulario
+      $(document).ready(function () {
+        $("#multiplosForm").submit(function (event) {
+          event.preventDefault();
+          let numero = parseInt($("#numero").val());
+
+          if (isNaN(numero)) {
+            Swal.fire("Error", "Por favor ingrese un número válido.", "error");
+          } else {
+            let multiplos = [];
+            for (let i = 1; i <= 10; i++) {
+              multiplos.push(numero * i);
+            }
+
+            let multiplosText = multiplos.join(", ");
+            Swal.fire(
+              "Múltiplos Generados",
+              "Los múltiplos de " + numero + " son: " + multiplosText,
+              "success"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

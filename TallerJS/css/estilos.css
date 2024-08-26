@@ -1,0 +1,19 @@
+.parrafo{
+    color: #0000ff;
+    background-color: #cccccc;
+}
+
+.parrafonoclic{
+    /* comentario */
+    color: #ff0000;
+    background-color: #dddddd;
+}
+
+a {
+    color: #00ffbf;
+    font-weight: bold;
+}
+
+#principal{
+    background-color: #999999; 
+}

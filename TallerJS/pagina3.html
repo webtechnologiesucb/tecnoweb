@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>JAVA SCRIPT</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Declaro la function mensaje
+        function mensaje() {
+          alert("Eligio aqui!");
+        }
+
+        function obtenerClic() {
+          $("p")
+            .first()
+            .click(function () {
+              mensaje();
+            });
+        }
+
+        obtenerClic();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="principal" class="row grow w-100">
+      <!-- <p onclick="alert('Eligio aqui!');"> -->
+      <p>Hacer clic.</p>
+      <p>No puede hacer clic.</p>
+    </div>
+  </body>
+</html>

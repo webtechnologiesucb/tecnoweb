@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <title>Ejemplo de JSON con JavaScript</title>
+    <!-- Agregar los enlaces a los archivos de Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Libros</h1>
+      <div id="libros"></div>
+    </div>
+    <br />
+    <input
+      class="btn btn-primary"
+      type="button"
+      onclick="history.back()"
+      value="Volver"
+    />
+    <script>
+      // Datos en formato JSON
+      let librosJSON = [
+        {
+          titulo: "El Gran Gatsby",
+          autor: "F. Scott Fitzgerald",
+          anio: 1925,
+        },
+        {
+          titulo: "1984",
+          autor: "George Orwell",
+          anio: 1949,
+        },
+        {
+          titulo: "Cien años de soledad",
+          autor: "Gabriel García Márquez",
+          anio: 1967,
+        },
+      ];
+
+      // Obtener el elemento HTML donde mostraremos los libros
+      let librosContainer = document.getElementById("libros");
+
+      // Recorrer los datos JSON y mostrarlos en la página
+      librosJSON.forEach(function (libro) {
+        let libroElement = document.createElement("div");
+        libroElement.innerHTML =
+          "<h2>" +
+          libro.titulo +
+          "</h2>" +
+          "<p>Autor: " +
+          libro.autor +
+          "</p>" +
+          "<p>Año: " +
+          libro.anio +
+          "</p>";
+        librosContainer.appendChild(libroElement);
+      });
+    </script>
+  </body>
+</html>

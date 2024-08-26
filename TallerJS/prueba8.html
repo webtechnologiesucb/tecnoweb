@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Edicion de campos</title>
+    <meta charset="iso-8859-1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function eliminaPrimerCampo() {
+          var campos = $('form[name="formUno"] input');
+          if (campos.length > 0) {
+            campos.first().remove();
+          } else {
+            alert("No existe mas campos!");
+          }
+        }
+
+        $("#btnEliminar").click(function () {
+          eliminaPrimerCampo();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btnEliminar" class="btn btn-primary">
+      Eliminar primer campo
+    </button>
+    <br />
+    <form name="formUno" action="">
+      <input type="text" id="campo1" value="campo de edicion 1" /><br />
+      <input type="text" id="campo1" value="campo de edicion 2" /><br />
+      <input type="text" id="campo1" value="campo de edicion 3" /><br />
+      <input type="text" id="campo1" value="campo de edicion 4" /><br />
+      <input type="text" id="campo1" value="campo de edicion 5" /><br />
+      <input type="text" id="campo1" value="campo de edicion 6" /><br />
+    </form>
+  </body>
+</html>

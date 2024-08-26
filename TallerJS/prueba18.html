@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Menu Opciones</title>
+<!-- charset = conjunto de caracteres -->
+<meta charset="iso-8859-1" />
+<!-- Responsive -->
+<meta
+  name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+/>
+<!-- Formato de Bootstrap-->
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+<!-- Hoja de estilos personalizado -->
+<link rel="stylesheet" href="css/estilos.css" />
+<!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (){
+        var flagArc = 0;
+        var flagGes = 0;
+        var flagRep = 0;
+
+        function archivo() {
+            if (flagArc == 0) {
+                flagArc = 1;
+                var arrayArchivo = ["Productos", "Proveedores", "Clientes", "Empleados"];
+                for (var i = 0; i < arrayArchivo.length; i++) {
+                var $itemNuevo = $("#idArc");
+                var $nuevoLi = $("<li>").text(arrayArchivo[i]);
+                $itemNuevo.append($nuevoLi);
+                }
+            } else {
+                flagArc = 0;
+                var $ulArc = $("ul").eq(1);
+                while ($ulArc.find("li").length > 0) {
+                $ulArc.find("li").first().remove();
+                }
+            }
+        }
+
+        function gestion() {
+            if (flagGes == 0) {
+                flagGes = 1;
+                var arrayGestion = ["Compras", "Ventas", "Devoluciones"];
+                for (var i = 0; i < arrayGestion.length; i++) {
+                var $itemNuevo = $("#idGes");
+                var $parrafo = $("<li>").text(arrayGestion[i]);
+                $itemNuevo.append($parrafo);
+                }
+            } else {
+                flagGes = 0;
+                var $ulArc = $("ul").eq(2);
+                while ($ulArc.find("li").length > 0) {
+                $ulArc.find("li").first().remove();
+                }
+            }
+        }
+
+        function reportes() {
+            if (flagRep == 0) {
+                flagRep = 1;
+                var arrayReportes = [
+                "Ventas consolidadas",
+                "Ventas al crédito",
+                "Compras al crédito",
+                "Clientes morosos",
+                "Balance mensual"
+                ];
+                for (var i = 0; i < arrayReportes.length; i++) {
+                var $itemNuevo = $("#idRep");
+                var $parrafo = $("<li>").text(arrayReportes[i]);
+                $itemNuevo.append($parrafo);
+                }
+            } else {
+                flagRep = 0;
+                var $ulRep = $("ul").eq(3);
+                while ($ulRep.find("li").length > 0) {
+                $ulRep.find("li").first().remove();
+                }
+            }
+        }
+
+        $("#btnArchivo").click(function (){
+            archivo();
+        });
+
+        $("#btnGestion").click(function (){
+            gestion();
+        });
+
+        $("#btnReportes").click(function (){
+            reportes();
+        });
+    });
+    </script>
+    </head>
+    <body>
+        <button id="btnArchivo" class="btn btn-primary">Archivo</button>
+        <button id="btnGestion" class="btn btn-primary">Gestion</button>
+        <button id="btnReportes" class="btn btn-primary">Reportes</button>
+        <ul>
+            <li>Archivo</li>
+            <ul id="idArc"></ul>
+            <li>Gestion</li>
+            <ul id="idGes"></ul>
+            <li>Reportes</li>
+            <ul id="idRep"></ul>
+            <li>Salir</li>
+        <ul>
+    </body>
+</html>

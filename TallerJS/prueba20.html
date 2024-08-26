@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" onload="load()">
+<head>
+    <title>Matriz Dinamica</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var num_fila_nueva=0;
+        function load() {
+            document.forms["formEntrada"].numeroImpar.value="";
+            document.forms["formEntrada"].cmdNuevo.disabled=true;
+            document.forms["formEntrada"].cmdNuevo.disabled = true;
+            document.forms["formEntrada"].numeroImpar.focus();
+        }
+
+        function valida() {
+            nImp = document.forms["formEntrada"].numeroImpar.value;
+            if ((isNaN(nImp)) || ( nImp % 2 == 0) )
+            return false;
+            else
+            return true;
+        }
+
+        function generarCuadradoMagico() {
+            if (valida()) {
+                nImpar=document.forms["formEntrada"].numeroImpar.value;
+                num_fila_nueva = 0;
+                tabla = document.getElementById("id_miTabla");
+                nFilas = document.getElementById('id_miTabla').rows.length;
+                for(f=0;f<nImpar;f++) {
+                    // creamos una nueva fila en la tabla
+                    fila = tabla.insertRow(num_fila_nueva++);
+                    for(c=0;c<nImpar;c++) {
+                        dato = "0";
+                        celda = fila.insertCell(c);
+                        currenttext = document.createTextNode(dato);
+                        celda.appendChild(currenttext);
+                        fila.appendChild(celda);
+                    }
+                }
+                document.forms["formEntrada"].cmdNuevo.disabled = false;
+                document.forms["formEntrada"].numeroImpar.disabled = true;
+                // generamos el cuadrado magico
+                fila = 0;
+                columna = Math.floor(nImpar/2);
+                elemento = 1;
+                while(elemento<=nImpar*nImpar) {
+                    document.getElementById('id_miTabla').rows[fila].cells[columna].innerHTML = elemento++;
+                    ftempo = (eval(fila)+eval(nImpar)-1) % eval(nImpar);
+                    ctempo = (eval(columna)+1) % eval(nImpar);
+                    if (document.getElementById('id_miTabla').rows[ftempo].cells[ctempo].innerHTML=="0") {
+                        fila=ftempo;
+                        columna=ctempo;
+                    } else {
+                        fila++;
+                    }
+                }
+            }
+            else
+            {
+                alert("Debe ingresar un numero impar!");
+                load();
+            }
+        }
+
+        function eliminaTabla() {
+            //nImpar=document.forms["formEntrada"].numeroImpar.value;
+            document.forms["formEntrada"].numeroImpar.disabled = false;
+            document.forms["formEntrada"].numeroImpar.value = "";
+            document.forms["formEntrada"].numeroImpar.focus();
+            // eliminamos la tabla
+            nFilas=document.getElementById('id_miTabla').rows.length;
+            nFilas--;
+            for (i=nFilas;i>=0;i--) {
+                p= document.getElementById('id_miTabla').rows[i];
+                p.parentNode.removeChild(p);
+            }
+            load();
+        }
+    </script>
+    </head>
+    <body onload="load()">
+        <form id="formEntrada" action="">
+            Ingrese un numero impar:
+            <input type="text" id="numeroImpar" value="" maxlength="3" size="3" />
+            <input type="button" id="cmdNuevo" class="btn btn-primary" value="Nuevo" onclick="eliminaTabla();" />
+        </form>
+        <form id="formResultado" action="">
+            <input id="button" id="cmdBajarDatos" class="btn btn-primary"
+            value="Generar" onclick="generarCuadradoMagico();" />
+            <table class="table table-bordered" id="id_miTabla" style="border: 1px black solid;" />
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <title>Formulario de Inscripción</title>
+    <!-- Agregar enlaces a los archivos de Bootstrap y SweetAlert -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Inscripción a Seminario</h1>
+      <form id="formularioInscripcion">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="tipoParticipante">Tipo de Participante:</label>
+          <select id="tipoParticipante" class="selectpicker">
+            <option value="elija" selected>--Elija una opcion--</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesional">Profesional</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="costoInscripcion">Costo de Inscripción:</label>
+          <span id="costoInscripcionValor"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Inscribirse</button>
+      </form>
+    </div>
+
+    <br />
+    <input
+      class="btn btn-primary"
+      type="button"
+      onclick="history.back()"
+      value="Volver"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $("#tipoParticipante").on("change", function () {
+        event.preventDefault();
+        let tipoParticipante = $("#tipoParticipante").val();
+        let costoInscripcionValor = tipoParticipante === "estudiante" ? 50 : 90;
+
+        $("#costoInscripcionValor").text("Bs. " + costoInscripcionValor);
+      });
+
+      $(document).ready(function () {
+        $("#formularioInscripcion").submit(function (event) {
+          event.preventDefault();
+
+          let nombre = $("#nombre").val();
+          let tipoParticipante = $("#tipoParticipante").val();
+          let costoInscripcionValor = $("#costoInscripcionValor").text();
+
+          let datos = "Nombre: " + nombre + "\n";
+          datos = datos + "Tipo Participante: " + tipoParticipante + "\n";
+          datos = datos + "Costo Inscripción: " + costoInscripcionValor + "\n";
+          $("#nombre").val("");
+          $("#tipoParticipante").val("--Elija una opcion--");
+          $("#costoInscripcionValor").text("");
+          // Aquí puedes enviar los datos a un servidor o realizar otras acciones
+          Swal.fire({
+            title: "¡Inscripción Exitosa!",
+            text: datos,
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Tours Bolivia</title>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var valueNuevo = 4;
+
+        function opcionElegida(opcion) {
+          var arrayDataLaPaz = [
+            ["0", "Elija lugar"],
+            ["1", "Yungas"],
+            ["2", "Copacabana"],
+            ["3", "Tiahuanaco"],
+            ["4", "El Lago sagrado"],
+            ["5", "San BuenaVentura"],
+          ];
+          var arrayDataPotosi = [
+            ["0", "Elija lugar"],
+            ["1", "Salar de Uyuni"],
+            ["2", "La casa de la Moneda"],
+            ["3", "Cerro Rico"],
+            ["4", "Lagunas Colorada"],
+          ];
+          var arrayDataSantaCruz = [
+            ["0", "Elija lugar"],
+            ["1", "Misiones Jesuitas"],
+            ["2", "El pantanal"],
+            ["3", "Samaipata"],
+            ["4", "Puerto Busch"],
+            ["5", "El Mutun"],
+          ];
+
+          var objetoSelect = $('form[name="formLugar"] option');
+          objetoSelect.remove();
+
+          var dataArray;
+          switch (opcion) {
+            case "1":
+              dataArray = arrayDataLaPaz;
+              break;
+            case "2":
+              dataArray = arrayDataPotosi;
+              break;
+            case "3":
+              dataArray = arrayDataSantaCruz;
+              break;
+          }
+
+          if (dataArray) {
+            $.each(dataArray, function (index, value) {
+              var objetoOption = $("<option>", {
+                value: value[0],
+                text: value[1],
+              });
+              $("#idLugar").append(objetoOption);
+            });
+          }
+        }
+
+        // Ejemplo de cómo llamar a la función opcionElegida
+        $("#idDepto").change(function () {
+          var opcion = $(this).val();
+          opcionElegida(opcion);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>Visite BOLIVIA:</p>
+    <select id="idDepto" class="form-select form-select-lg" size="1">
+      <option value="0">Elija departamento</option>
+      <option value="1">La Paz</option>
+      <option value="2">Potosi</option>
+      <option value="3">Santa Cruz</option>
+    </select>
+    <br />
+    <form name="formLugar" class="form-select form-select-lg" action="">
+      <select id="idLugar" size="1"></select>
+    </form>
+  </body>
+</html>

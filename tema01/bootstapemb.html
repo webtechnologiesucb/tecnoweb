@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <title>Registro de Usuario con Bootstrap</title>
+    <!-- Agregar los enlaces a los archivos de Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Registro de Usuario</h1>
+      <form id="registroForm">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            placeholder="Ingrese su nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Ingrese su correo"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="contrasena"
+            placeholder="Ingrese su contraseña"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+    </div>
+
+    <br />
+    <input
+      class="btn btn-primary"
+      type="button"
+      onclick="history.back()"
+      value="Volver"
+    />
+
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Manejar el envío del formulario
+      $(document).ready(function () {
+        $("#registroForm").submit(function (event) {
+          event.preventDefault();
+          let nombre = $("#nombre").val();
+          let email = $("#email").val();
+          let contrasena = $("#contrasena").val();
+
+          // Aquí puedes enviar los datos a un servidor o realizar otras acciones
+          let mensaje = "";
+          mensaje = "Nombre: " + nombre + ", ";
+          mensaje += "Email: " + email + ", ";
+          mensaje += "Contraseña: " + contrasena + " ";
+
+          Swal.fire("Ingreso aceptado", mensaje, "success");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Menú Desplegable en Bootstrap</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Agregar enlaces a los archivos de Bootstrap y estilos personalizados -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div class="row grow w-100">
+      <nav class="col-12 navbar navbar-expand-lg navbar-dark bg-primary">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Navegacion Simple"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="calculadora.html">Calculadora</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="otros.html">Otros</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Opciones
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="flexbox.html">Flexbox</a>
+                <a class="dropdown-item" href="demojson.html">DemoJSON</a>
+                <a class="dropdown-item" href="demobootstrap.html">Bootstrap</a>
+                <a class="dropdown-item" href="bootstapemb.html"
+                  >FrmBootstrap</a
+                >
+                <a class="dropdown-item" href="swalconbs.html">Swal</a>
+                <a class="dropdown-item" href="formulario.html">Formulario</a>
+                <a class="dropdown-item" href="seminario.html">Seminario</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <aside class="col-4 order-md-1 vh-100 bg-info py-3">
+        <h4>Aside</h4>
+        <p class="mb-5">
+          Militat omnis amans, et habet sua castra Cupidus; Attice, crede mihi,
+          militat omnis amans. quae bello est habilis, Veneri quoque convenit
+          aetas. turpe senex miles, turpe senilis amor. quos petiere duces
+          animos in milite forti, hos petit in socio bella puella viro.
+          pervigilant ambo; terra requiescit uterque, ille fores dominae servat,
+          at ille ducis. militis officium longa est via; mitte puellam, strenuus
+          exempto fine sequetur amans.[…]
+        </p>
+        <p class="mb-5">
+          Quis nisi vel miles vel amans et frigora noctis et denso mixtas
+          perferet imbre nives? mittitur infestos alter speculator in hostes; in
+          rivale oculos alter, ut hoste, tenet. Ille graves urbes, hic durae
+          limen amicae, obsidet; hic portas frangit, at ille fores. […] Ipse ego
+          segnis eram discinctaque in otia natus; mollierant animos lectus et
+          umbra meos. Impulit ignavum formosae cura puellae iussit et in castris
+          aera merere suis. Inde vides agilem nocturnaque bella gerentem qui
+          nolet fieri desidiosus, amet!.
+        </p>
+      </aside>
+      <div class="main col-8 bg-warning vh-100 py-3">
+        <!-- Contenido de la sección -->
+        <h4>Main</h4>
+        <p class="mb-5">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a
+          bibendum ipsum, non fringilla nisl. Aenean maximus nunc non ligula
+          dictum, gravida hendrerit diam euismod. Donec ac ante quis nulla
+          sagittis aliquam. Integer placerat arcu tellus, in fringilla neque
+          dapibus non. Nullam ac tincidunt massa. Phasellus nec quam sapien.
+          Aliquam in ex sapien. Donec varius dolor eget metus pretium egestas.
+        </p>
+        <p class="mb-5">
+          Proin scelerisque euismod lectus, ut hendrerit lorem fringilla quis.
+          Suspendisse molestie tincidunt libero a semper. Phasellus congue
+          sodales tortor vel blandit. Cras id lectus eget purus blandit
+          efficitur id condimentum nibh. Morbi pharetra est a dictum suscipit.
+          Proin tincidunt elit sed suscipit ultricies. Phasellus sed gravida
+          libero. Ut egestas, eros ac congue accumsan, orci ex posuere metus, id
+          scelerisque nulla tellus sed magna. Vivamus in ipsum nulla.
+          Suspendisse eu fringilla nulla. Vivamus pharetra mauris nulla, ac
+          consequat ligula vulputate at. Aenean nec lorem mattis, tempus magna
+          in, porta leo. Fusce sodales luctus placerat. Nam pulvinar in quam in
+          rhoncus. Vestibulum a dolor eget erat euismod dapibus.
+        </p>
+        <p class="mb-5">
+          Ut non sem sagittis, tempus ipsum nec, maximus est. Vivamus porttitor,
+          diam non sollicitudin auctor, magna massa dictum libero, a fermentum
+          tellus ipsum nec ante. Curabitur in iaculis elit. Sed congue urna at
+          gravida venenatis. Vestibulum et quam tempor, vestibulum purus ac,
+          iaculis ante. In quis ornare dolor, sed fringilla leo. Proin suscipit
+          arcu justo, ac gravida diam ultrices facilisis.
+        </p>
+      </div>
+    </div>
+    <div class="row w-100">
+      <footer class="col-12 py-3 bg-danger">
+        <!-- Contenido del pie de página -->
+        <p>&copy; 2024 Tecnologias Web.</p>
+      </footer>
+    </div>
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

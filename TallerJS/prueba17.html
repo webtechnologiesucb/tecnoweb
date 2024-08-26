@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- charset = conjunto de caracteres -->
+    <meta charset="iso-8859-1" />
+    <!-- Responsive -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- Formato de Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Hoja de estilos personalizado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function verEstructuraDeTabla() {
+          var mt = $("#tablaMaestra").html();
+          alert(mt);
+        }
+
+        function agregarNuevaFila() {
+          var $tabla = $("#tablaMaestra");
+          var $fila = $("<tr>");
+          var numColumnas = 1 + Math.floor(Math.random() * 5);
+          var ubiColspan = Math.floor(Math.random() * numColumnas);
+          for (var i = 0; i <= numColumnas; i++) {
+            var $celda = $("<td>");
+            var datoDeCelda = Math.floor(Math.random() * 1000);
+            var nColspan = 7 - numColumnas;
+            if (i == ubiColspan) $celda.attr("colspan", nColspan);
+            $celda.text(datoDeCelda);
+            $fila.append($celda);
+          }
+          $tabla.append($fila);
+        }
+
+        $("#btnAgregar").click(function () {
+          agregarNuevaFila();
+        });
+
+        $("#btnEstructurar").click(function () {
+          verEstructuraDeTabla();
+        });
+      });
+    </script>
+  </head>
+  <body onLoad="verEstructuraDeTabla()">
+    <button id="btnAgregar" class="btn btn-primary">
+      Agregar fila de datos
+    </button>
+    <button id="btnEstructurar" class="btn btn-primary">
+      Ver estructura de la tabla
+    </button>
+    <table id="tablaMaestra" class="table table-striped table-bordered">
+      <tr>
+        <td style="border: 1px black solid">La Paz</td>
+        <td style="border: 1px black solid">Oruro</td>
+        <td style="border: 1px black solid">Tarija</td>
+        <td style="border: 1px black solid">Pando</td>
+        <td style="border: 1px black solid" colspan="2">Beni</td>
+        <td style="border: 1px black solid">Potosi</td>
+      </tr>
+      <tr>
+        <td style="border: 1px black solid">Pando</td>
+        <td style="border: 1px black solid" colspan="5">Beni</td>
+        <td style="border: 1px black solid">Chuquisaca</td>
+      </tr>
+    </table>
+  </body>
+</html>

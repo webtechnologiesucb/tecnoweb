@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Radio Button</title>
+    <meta charset="iso-8859-1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('input[type="radio"]').on("dblclick", function () {
+          $(this).prop("checked", false);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>Elija la carrera de su preferencia (doble click=ninguno)</p>
+    <input type="radio" name="grupo" value="1" />Sistemas
+    <input type="radio" name="grupo" value="2" />Industrial
+    <input type="radio" name="grupo" value="3" />Civil
+    <input type="radio" name="grupo" value="4" />Biomedica
+  </body>
+</html>

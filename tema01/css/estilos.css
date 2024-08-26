@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: beige;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  margin: 5px;
+  float: left;
+}
+
+.tabla-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: -10px; /* Agregar margen negativo para compensar los márgenes internos */
+}
+
+.celda {
+  flex: 0 0 calc(33.33% - 20px); /* Distribuir en 3 columnas y restar márgenes */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px; /* Agregar margen interno entre celdas */
+}
+
+.grow {
+  flex: 1;
+}
+
+.main {
+  overflow-y: auto;
+}
