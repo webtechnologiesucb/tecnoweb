@@ -17,20 +17,22 @@
     <!-- Hoja de estilos personalizado -->
     <link rel="stylesheet" href="css/estilos.css" />
     <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://zeptojs.com/zepto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-      $(document).ready(function () {
+      $(function () {
         function confirmar() {
-          if (confirm("Desea continuar?")) {
-            let _x = "9";
-            let _y = 8;
-            alert(Number(_x) + Number(_y));
+          if (confirm("¿Desea continuar?")) {
+            var _x = "9";
+            var _y = 8;
+            var resultado = Number(_x) + Number(_y);
+            Swal.fire("Mensaje", resultado.toString(), "info");
           }
         }
 
-        $("#btnSumar").click(function () {
+        $("#btnSumar").on("click", function () {
           confirmar();
         });
       });

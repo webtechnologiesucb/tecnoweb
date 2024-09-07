@@ -17,21 +17,22 @@
     <!-- Hoja de estilos personalizado -->
     <link rel="stylesheet" href="css/estilos.css" />
     <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://zeptojs.com/zepto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <input type="text" id="txtPersona" />
     <button id="btnSaludo" class="btn btn-primary">Saludo</button>
     <script type="text/javascript">
-      $(document).ready(function () {
+      $(function () {
         // Escribimos en el navegador
         $("body").prepend("<h1>Bienvenido a JavaScript</h1>");
 
         // Evento click para el botón
-        $("#btnSaludo").click(function () {
-          alert($("#txtPersona").val());
+        $("#btnSaludo").on("click", function () {
+          Swal.fire("Mensaje", $("#txtPersona").val(), "info");
         });
       });
     </script>

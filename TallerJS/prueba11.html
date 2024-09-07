@@ -2,48 +2,40 @@
 <html>
   <head>
     <title>Opciones JS</title>
-    <!-- charset = conjunto de caracteres -->
-    <meta charset="iso-8859-1" />
-    <!-- Responsive -->
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <!-- Formato de Bootstrap-->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <!-- Hoja de estilos personalizado -->
-    <link rel="stylesheet" href="css/estilos.css" />
-    <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-      $(document).ready(function () {
+      $(function () {
         function eliminaOption() {
           var objetoSelect = $("option");
           if (objetoSelect.length > 1) {
             objetoSelect.each(function (index) {
-              if (index > 0 && $(this).is(":selected")) {
-                alert("eligio el valor " + $(this).val());
+              if (index > 0 && $(this).is("option:selected")) {
+                Swal.fire(
+                  "Mensaje",
+                  "Eligió el valor " + $(this).val(),
+                  "info"
+                );
                 $(this).remove();
               }
             });
           } else {
-            alert("No hay mas opciones para eliminar!");
+            Swal.fire(
+              "Mensaje",
+              "¡No hay más opciones para eliminar!",
+              "error"
+            );
           }
         }
 
-        $("#btnEliminar").click(function () {
+        $("input[name='eliminaOpcion']").click(function () {
           eliminaOption();
         });
       });
     </script>
   </head>
   <body>
-    <button id="btnEliminar" class="btn btn-primary">Eliminar opcion</button>
+    <input type="button" name="eliminaOpcion" value="Eliminar opción" />
     <br /><br />
     <select id="idComponentes" name="componentes" size="1">
       <option value="0">Elija</option>

@@ -17,22 +17,23 @@
     <!-- Hoja de estilos personalizado -->
     <link rel="stylesheet" href="css/estilos.css" />
     <!-- Agregar el enlace al archivo de script de Bootstrap (jQuery y Popper.js) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://zeptojs.com/zepto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-      $(document).ready(function () {
+      $(function () {
         var veces = 1;
 
         function modificarParrafo() {
-          nuevoParrafo = $("<p></p>").text(
-            "Este parrafo es nuevo. Es el cambio # " + veces++
+          var nuevoParrafo = $("<p></p>").text(
+            "Este párrafo es nuevo. Es el cambio # " + veces++
           );
           var anteriorParrafo = $("p").first();
           anteriorParrafo.replaceWith(nuevoParrafo);
         }
 
-        $("#btnModificar").click(function () {
+        $("#btnModificar").on("click", function () {
           modificarParrafo();
         });
       });

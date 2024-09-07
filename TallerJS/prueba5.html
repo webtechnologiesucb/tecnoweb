@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Title here!</title>
+    <title>Operaciones</title>
     <meta charset="iso-8859-1" />
     <meta
       name="viewport"
@@ -12,11 +12,12 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="css/estilos.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://zeptojs.com/zepto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-      $(document).ready(function () {
+      $(function () {
         function operar(opcion) {
           var dato1 = $("#campo1").val();
           var dato2 = $("#campo2").val();
@@ -30,18 +31,18 @@
               break;
             case "3":
               resultado =
-                "La multiplicacion es = " + Number(dato1) * Number(dato2);
+                "La multiplicación es = " + Number(dato1) * Number(dato2);
               break;
             case "4":
               if (dato2 != 0)
-                resultado = "La division es = " + Number(dato1) / Number(dato2);
+                resultado = "La división es = " + Number(dato1) / Number(dato2);
               else resultado = "Indefinido";
               break;
           }
-          alert(resultado);
+          Swal.fire("Mensaje", resultado.toString(), "success");
         }
 
-        $('input[name="grupo"]').click(function () {
+        $('input[name="grupo"]').on("click", function () {
           operar($(this).val());
         });
       });

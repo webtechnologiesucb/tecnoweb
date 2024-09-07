@@ -12,11 +12,12 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="css/estilos.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://zeptojs.com/zepto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-      $(document).ready(function () {
+      $(function () {
         function recuperarContenido() {
           var dato1 = $("#campo1").val();
           var dato2 = $("#campo2").val();
@@ -32,15 +33,15 @@
           switch (operacion) {
             case "1":
               resultado = Number(dato1) + Number(dato2);
-              alert("La suma es = " + resultado);
+              Swal.fire("Mensaje", "La suma es = " + resultado, "success");
               break;
             case "2":
               resultado = Number(dato1) - Number(dato2);
-              alert("La resta es = " + resultado);
+              Swal.fire("Mensaje", "La resta es = " + resultado, "success");
               break;
             case "3":
               resultado = Number(dato1) * Number(dato2);
-              alert("El producto es = " + resultado);
+              Swal.fire("Mensaje", "El producto es = " + resultado, "success");
               break;
             case "4":
               if (dato2 != 0) {
@@ -48,10 +49,10 @@
               } else {
                 resultado = "Indefinido";
               }
-              alert("La division es = " + resultado);
+              Swal.fire("Mensaje", "La división es = " + resultado, "success");
               break;
             default:
-              alert("Elija una operacion");
+              Swal.fire("Mensaje", "Elija una operación", "error");
           }
         }
 
@@ -78,11 +79,11 @@
           }
         });
 
-        $("#btnOperar").click(function () {
+        $("#btnOperar").on("click", function () {
           recuperarContenido();
         });
 
-        $("#btnNuevo").click(function () {
+        $("#btnNuevo").on("click", function () {
           nuevaOperacion();
         });
       });
