@@ -4,9 +4,8 @@ $db = 'sakila';
 $user = 'root';
 $pass = '';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo 'Fallida conexion: ' . $e->getMessage();
+$mysqli = new mysqli($host, $user, $pass, $db);
+
+if ($mysqli->connect_error) {
+    die('Fallo la conexion: ' . $mysqli->connect_error);
 }

@@ -11,8 +11,8 @@
 <body>
     <div class="container mt-5">
         <h2 class="text-center">CRUD Tabla Categoria</h2>
-        <div id="categoryTable"></div>
         <button class="btn btn-primary" onclick="crearCat()">Agregar Categoria</button>
+        <div id="categoryTable"></div>
     </div>
 
     <script>
@@ -29,9 +29,10 @@
         function crearCat() {
             Swal.fire({
                 title: 'Agregar Categoria',
-                html: '<input id="name" class="swal2-input" placeholder="Name">',
+                html: '<input id="name" class="swal2-input" placeholder="Nombre">',
                 showCancelButton: true,
                 confirmButtonText: 'Guardar',
+                cancelButtonText: 'Cancelar',
                 preConfirm: () => {
                     const name = $('#name').val();
                     if (!name) {
@@ -55,6 +56,7 @@
                 html: '<input id="name" class="swal2-input" value="' + name + '">',
                 showCancelButton: true,
                 confirmButtonText: 'Actualizar',
+                cancelButtonText: 'Cancelar',
                 preConfirm: () => {
                     const newName = $('#name').val();
                     if (!newName) {
@@ -78,7 +80,8 @@
                 text: "No puedes deshacer esta eliminación!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Si, eliminar!'
+                confirmButtonText: 'Si, eliminar!',
+                cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.post('delete.php', { id: id }, function() {
