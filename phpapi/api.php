@@ -84,7 +84,7 @@ function handleDelete($mysqli)
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (!empty($data['id'])) {
-        $stmt = $mysqli->prepare("DELETE FROM category WHERE category_id = ?");
+        $stmt = $mysqli->prepare("UPDATE category SET isDeleted = 1 WHERE category_id = ?");
         $stmt->bind_param("i", $data['id']);
 
         if ($stmt->execute()) {

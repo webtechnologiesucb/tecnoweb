@@ -26,20 +26,13 @@
                   <td>
                     <router-link
                       :to="`/show/${category.category_id}`"
-                      class="btn btn-outline-info mx-1"
-                      >Mostrar</router-link
-                    >
+                      class="btn btn-outline-info mx-1">Mostrar</router-link>
                     <router-link
                       :to="`/edit/${category.category_id}`"
-                      class="btn btn-outline-success mx-1"
-                      >Editar</router-link
-                    >
+                      class="btn btn-outline-success mx-1">Editar</router-link>
                     <button
                       @click="handleDelete(category.category_id)"
-                      className="btn btn-outline-danger mx-1"
-                    >
-                      Eliminar
-                    </button>
+                      className="btn btn-outline-danger mx-1">Eliminar</button>
                   </td>
                 </tr>
               </tbody>
@@ -96,7 +89,6 @@
             axios
               .delete(`http://localhost/tecnoweb/phpvue/api/api.php?id=${id}`)
               .then((response) => {
-                alert(id);
                 Swal.fire({
                   icon: "success",
                   title: "Categoría eliminada correctamente!",
