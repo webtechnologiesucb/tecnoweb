@@ -87,7 +87,9 @@
         }).then((result) => {
           if (result.isConfirmed) {
             axios
-              .delete(`http://localhost/tecnoweb/phpvue/api/api.php?id=${id}`)
+              .delete(`http://localhost/tecnoweb/phpvue/api/api.php?id=${id}`, {
+              data: { id: id },
+            })
               .then((response) => {
                 Swal.fire({
                   icon: "success",
@@ -95,6 +97,7 @@
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                console.log(response);
                 this.fetchCategoryList();
                 return response;
               })
