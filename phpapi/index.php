@@ -7,8 +7,8 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">CRUD Category</h2>
-        <div id="categoryTable"></div>
+        <h2 class="text-center">CRUD Categoria</h2>
+        <div id="tablaCategoria"></div>
         <button class="btn btn-primary" onclick="crearFormulario()">Agregar Categoria</button>
     </div>
 
@@ -33,7 +33,7 @@
                         </tr>`;
                     });
                     table += '</table>';
-                    document.getElementById('categoryTable').innerHTML = table;
+                    document.getElementById('tablaCategoria').innerHTML = table;
                 });
         }
 
