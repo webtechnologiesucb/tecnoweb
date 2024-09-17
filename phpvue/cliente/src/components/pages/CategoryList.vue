@@ -4,8 +4,8 @@
         <h2 class="text-center mt-5 mb-3">Gestor de Categorías</h2>
         <div class="card">
           <div class="card-header">
-            <router-link to="/create" class="btn btn-outline-primary"
-              >Crear nueva categoría
+            <router-link to="/create" class="btn btn-outline-primary">
+                Crear nueva categoría
             </router-link>
           </div>
           <div class="card-body">
