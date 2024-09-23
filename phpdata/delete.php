@@ -3,7 +3,7 @@ include 'db.php';
 
 $id = $_POST['id'];
 
-$sql = "DELETE FROM category WHERE category_id = ?";
+$sql = "UPDATE category SET isDeleted=1 WHERE category_id = ?";
 $stmt = $mysqli->prepare($sql);
 
 if ($stmt) {
